@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Best Online Shopping site for clothes - BeYoung</title>
+    <link rel="icon" type="image/x-icon"href="https://www.beyoung.in/favicon-32x32.png">
+    <link rel="stylesheet" href="style.css">
+    
+  </head>
+  <style>
+    a {
+        text-decoration: none;
+        color: black;
+    }
+      .first{
+            background-color: #FFDD00;
+        }
+        .second{
+            background-color: #000000;
+            color: white;
+        }
+        ul{
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        li{
+            padding-right: 10px;
+        }
+        .nav{
+            padding-left: 170px;
+        }
+        .nav2{
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .center{
+            text-align: center;
+        }
+        .box{
+            border-radius: 5px;
+        }
+        button{
+            border-radius: 25px;
+            padding: 10px;
+            width: 100px;
+            margin-right: 10px ;
+        }
+        .box2{
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .line{
+            border: 3px solid rgb(254, 254, 11);
+                }
+        h5{
+            margin-top: -31px;
+        }
+        .create{
+            background-color: white;
+            width: 50%;
+            margin: auto;
+        }
+        .info{
+            background-color: #EAEAEA;
+        }
+       .btn{
+        padding: 10px;
+        background-color: yellow;
+        color: black;
+        border-radius: 5px;
+       }
+       input{
+        padding: 10px;
+        border-radius: 5px;
+       }
+       .footer{
+        background-color: #000000;
+        color: white;
+       }
+       .next{
+        color: yellow;
+        font-size: 20px;
+       }
+       .line{
+        display: flex;
+       }
+       .border123{
+        border-left: 3px solid yellow;
+       }
+       .background{
+        background-color: black;
+       }
+        .active a{
+            font-weight: bold;
+            color: #c18080ff;
+        }
+   
+    </style>
+  <body>
+    <header>
+    <div class="d-flex justify-content-center py-1 first">
+        <div>Free Shipping Sitewide on Every Order, Don't Miss Out!!
+        </div>
+    </div>
+    <div class="d-flex justify-content-around py-1 second">
+        <div>
+        <i class="bi bi-geo-alt"></i>
+        TRACK YOUR ORDER
+        </div>
+        <div>
+
+        </div>
+        {% comment %} <div>
+            LOG IN | SIGNUP
+        </div> {% endcomment %}
+        <div>
+            {% if user.is_authenticated %}
+                <div
+                    style="font-weight: 500; margin-left: 20px; color: #222; border: solid black 1px; padding: 10px; border-radius: 7px; ">
+                    <a target="_blank" class=" hov-btn3"
+                    style="text-decoration: none; border-radius: 15px; padding: 8px; color: white;"
+                    href="{% url 'logout_user' %}">Logout</a>
+                    </div>
+                    {% else %}
+                    <div
+                    style="font-weight: 500; margin-left: 10px; color: #222; border: solid black 1px; padding: 10px; border-radius: 7px; ">
+                    <a class=" hov-btn3" style="text-decoration: none; border-radius: 15px;color: white; padding: 4px; "
+                    href="{% url 'register' %}" target="_blank">Register</a> <span style="color: white;">/</span> <a target="_blank"
+                    class=" hov-btn3" style="text-decoration: none; color: white; border-radius: 15px; padding: 4px;"
+                    href="{% url 'login_user' %}">Login</a>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="icon-item mx-3 d-flex align-items-center flex-column pt-3">
+                <a href="/account" class="text-decoration-none text-black d-flex align-items-center flex-column"><i class="fa-regular fa-user"></i></a>
+                <p class="m-0"><a href="/account" class="text-decoration-none text-black d-flex align-items-center flex-column">Account</a></p>
+            </div>
+    </div>
+    <!-- <div class="d-flex justify-content-between py-4">
+        <div>
+        <ul>
+            <h4 class="nav">BEYOUNG</h4>
+            <div class="nav2">
+                <li class="px-5">MEN</li>
+                <li>WOMEN</li>
+                <li class="px-5">COMBOS</li>
+                <li>CARGO JOGGERS</li>
+                <li class="px-5">MEN'S SHIRT</li>
+                <li>NEW ARRIVALS</li>
+            </div>
+        </ul>
+        </div>
+        <div>
+            <form>
+                <input type="text" placeholder="Search" name="search" class="w-100">
+                <i class="bi bi-search border p-2"></i>
+                <i class="bi bi-heart border p-2"></i>
+                <i class="bi bi-cart3 border p-2"></i>
+            </form>
+            
+        </div>
+        <div></div>
+    </div> -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1 h4 py-3"><a href="{% url "index" %}">BEYOUNG</a></div>
+            <div class="col-md-7 h6">
+                <ul>
+                    <li class="px-4 pt-4 {% if category == 'Topwear' %}active{% endif %}">
+                        <a href="{% url 'category' 'Topwear' %}">TOPWEAR</a>
+                    </li>
+
+                    <li class="pt-4 {% if category == 'Bottomwear' %}active{% endif %}">
+                        <a href="{% url 'category' 'Bottomwear' %}">BOTTOMWEAR</a>
+                    </li>
+
+                    <li class="px-4 pt-4 {% if category == 'Summer Collection' %}active{% endif %}">
+                        <a href="{% url 'category' 'Summer Collection' %}">SUMMER</a>
+                    </li>
+
+                    <li class="px-4 pt-4 {% if category == 'Combos' %}active{% endif %}">
+                        <a href="{% url 'category' 'Combos' %}">COMBOS</a>
+                    </li>
+
+                    <li class="px-4 pt-4 {% if category == 'New Arrival' %}active{% endif %}">
+                        <a href="{% url 'category' 'New Arrival' %}">NEW ARRIVAL</a>
+                    </li>
+
+                    <li class="px-4 pt-4 {% if category == 'new' %}active{% endif %}">
+                        <a href="{% url 'category' 'new' %}">NEW</a>
+                    </li>
+                </ul>
+            </div>
+             <div class="col-md-4 py-3">
+                <div class="search pe-4 d-flex align-items-center">
+                    <foTopwearrm class="d-flex w-100">
+                    <form method="POST" action="/searchpage/" class="d-flex w-100">
+                        {% csrf_token %}
+                        <input type="text" placeholder="Search" name="search" class="w-100">
+                        <a href="{% url "searchpage" %}" class="text-decoration-none text-black d-flex align-items-center flex-column">
+                            <i class="fa-solid fa-magnifying-glass border p-4"></i>
+                        </a>
+                    </form>
+                        {% comment %} <i class="fa-solid fa-cart-shopping border p-4"></i>   {% endcomment %}
+                         <a href="{% url "cart_view" %}" class="text-decoration-none text-black d-flex align-items-center flex-column">
+                            <i class="fa-solid fa-cart-plus  border p-4"></i>
+                            {% comment %} <p class="m-0">Cart</p> {% endcomment %}
+                        </a>                      
+                        {% comment %} <i class="fa-regular fa-heart border p-4"></i> {% endcomment %}
+                        <a href="{% url "wishlist_view" %}" class="text-decoration-none text-black d-flex align-items-center flex-column">
+                            <i class="fa-regular fa-heart border p-4"></i>
+                            {% comment %} <p class="m-0">Wishlist</p> {% endcomment %}
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </header>
+
+{% block content %}
+
+{% endblock content %}
+  
+    <footer>
+    <div class="container-fluid footer">
+        <div class="row">
+            <div class="col">
+                <div class="container">
+                    <div class="row py-5">
+                        <div class="col-md-3">
+                           <div class="next">Need help</div>
+                            <div class="py-2">Contact Us</div>
+                            <div>Track Order</div>
+                            <div class="py-2">Returns & Refunds</div>
+                            <div>FAQ's</div>
+                            <div class="py-2">Career</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="next">COMPANY</div>
+                             <div class="py-2">About Us</div>
+                             <div>Beyoung Blog</div>
+                             <div class="py-2">Beyoungistan</div>
+                             <div>Collaboration</div>
+                             <div class="py-2">Media</div>
+                         </div>
+                         <div class="col-md-3">
+                            <div class="next">MORE INFO</div>
+                             <div class="py-2">Term and Conditions</div>
+                             <div>Privacy Policy</div>
+                             <div class="py-2">Shipping Policy</div>
+                             <div>Sitemap</div>
+                         </div>
+                         <div class="col-md-3">
+                            <div class="next">LOCATION</div>
+                             <div class="py-2">support@beyoung.in</div>
+                             <div>Eklingpura Chouraha, Ahmedabad Main Road</div>
+                             <div class="py-2">(NH 8- Near Mahadev Hotel) Udaipur, India- 313002</div>
+                             <div class="next">DOWNLOAD THE APP</div>
+                            <div class="line">
+                                <img src="https://www.beyoung.in/api/catalog/footer/11Play-Store-footer.png"width="50%">
+                                <img src="https://www.beyoung.in/api/catalog/footer/12App-Store-footer.png"width="50%">
+                            </div>
+
+                         </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container py-5">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"style="background-color:black;color:yellow;">
+                        WHY CHOOSE US?
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body"style="background-color:black;">
+                        Beyoung - An Affordable Online Shopping Site in India
+Online shopping was rapidly gaining popularity, but affordable and trendy options were limited. Back in 2018, when the word “fashion” was synonymous with high-end and pricy fashion labels, a bunch of young minds got an idea. An idea that would soon turn into a profitable venture and become one of the best online clothing shopping sites in India.
+
+Beyoung is exactly what it sounds like—Being Young, because why not? After all, youthfulness is a timeless concept. Being young means being experimental, fun, and fashionable, not just with clothes, but with life itself. Beyoung not only believes but practices this philosophy with its catalog which makes it India’s most trusted online shopping site for clothes. So move in style, and be bold with your choices; we've got you covered, at least for your fashion fixes.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"style="background-color:black;color:yellow;">
+                        POPULAR CATEGORIES
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body"style="background-color:black;">
+                                                            Men's Clothing
+
+                                    Topwear: T-Shirts for Men | Half Sleeve T-Shirts | Full Sleeve T-Shirts | Men's Shirts | Printed T-Shirts | Plain T-Shirts | Polo T-Shirts | Plus Size T-Shirts | Combos | Old Money Aesthetic Outfits | Men's Textured Shirts | Men's Corduroy Shirts
+
+                                    Theme Based T-Shirts: Ipl T-Shirts | Men's Travel T-Shirts | Gym T-Shirts | Quotes T-Shirts | Cartoon T-Shirts | Biker T-Shirts | Work From Home T-Shirts | Student T-Shirts | Funky T-Shirts
+
+                                    Winter Collection : Hoodies for Men | Sweatshirts for Men | Jackets for Men
+
+                                    Women's Clothing
+
+                                    Topwear: Women Shirts | Half Sleeve T-Shirts | Full Sleeve T-Shirts | T-Shirts for Women | Plain T-Shirts | Oversized T-Shirts for Women | Summer T-Shirts | Crop Tops | Plus Size T-Shirts | Kurti
+
+                                    Theme Based T-Shirts: Women's Travel T-Shirts | Feminist T-Shirts
+
+                                    Winter Collection: Hoodies for Women | Sweatshirts for Women | Long Coats for Women
+
+                                    Couple Wear
+
+                                    Couple Boxers | Couple T-Shirts
+
+                                    Bottomwear:
+
+                                    Mens Boxers | Womens Boxers | Jeggings | Men Sweatpants | Mens Cargo Pants | Shorts for Men | Mens Joggers | Chino Pants | Mens Jeans | Mens Pyjamas
+                    </div>
+                  </div>
+                </div>
+              
+              </div>
+              </div>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div><h3>100% SECURE PAYMENT</h3></div>
+                        <div>
+                            <img src="https://www.beyoung.in/api/catalog/footer/Frame-payment%20-1.jpg"width="100%">
+                        </div>
+                    </div>
+                    <div class="col-md-6  px-5 border123">
+                        <div>
+                           <h3>LET'S BE FRIENDS</h3>
+                        </div>
+                        <div class="py-3">
+                            <i class="bi bi-instagram pe-3"></i>
+                            <i class="bi bi-linkedin"></i>
+                            <i class="bi bi-facebook px-3"></i>
+                            <i class="bi bi-twitter"></i>
+                            <i class="bi bi-youtube px-3"></i>
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="container">
+                <div class="row py-4"> 
+                    <div class="col center">
+                        Copyright © 2024 Beyoung Folks Pvt Ltd. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+   
+  </body>
+</html>

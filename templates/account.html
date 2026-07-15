@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+    .account-container {
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+        margin-bottom: 1rem;
+    }
+    .info {
+        margin-bottom: 1rem;
+    }
+    .info strong {
+        display: inline-block;
+        width: 100px;
+    }
+    .actions a {
+        display: inline-block;
+        margin-right: 1rem;
+        color: #007bff;
+        text-decoration: none;
+    }
+</style>
+
+<div class="account-container">
+    <h2>My Account</h2>
+    <div class="info">
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>First name:</strong> {{ user.first_name }}</p>
+        <p><strong>Last name:</strong> {{ user.last_name }}</p>
+    </div>
+</div>
+<div style="margin-bottom: 300px;"></div>
+
+{% endblock %}

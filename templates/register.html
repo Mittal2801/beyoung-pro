@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container mb-5 border shadow">
+    <div class="row justify-content-center">
+        <div class="col-lg-7 col-12">
+            <div class="container-sm title mb-4 mt-3">
+                <h4 class="text-center fs-3 fw-bold py-2">Register</h4>
+            </div>
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color: red;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            
+            <form action="#" method="post" class="form-wrapper form mb-5"> 
+                {% csrf_token %}     
+                <div class="form-container">
+                    <div class="form-heading">
+                        <h4 class="fs-5">Your Personal Details</h4>
+                    </div>
+                </div>
+                
+                <div class="form-container">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group field">
+                                <label for="first_name">User Name :</label>
+                                <input type="text" class="form-control"  name="username" placeholder="First Name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group field">
+                                <label for="first_name">First Name :</label>
+                                <input type="text" class="form-control"  name="first_name" placeholder="First Name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group field">
+                                <label for="last_name">Last Name :</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group field">
+                                <label for="email">Email :</label>
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
+                            </div>
+                        </div>
+                        {% comment %} <div class="col-md-6 col-12">
+                            <div class="form-group field">
+                                <label for="mobile">Mobile Number :</label>
+                                <input type="number" name="mobile" class="form-control" id="mobile" placeholder="Mobile Number" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group field">
+                                <label for="address">Address :</label>
+                                <input type="text" name="address" class="form-control" id="address" placeholder="Address" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group field">
+                                <label for="city">City :</label>
+                                <input type="text" name="city" class="form-control" id="city" placeholder="City" required>
+                            </div>
+                        </div> {% endcomment %}
+                    </div>
+
+                </div>
+
+                <div class="form-container">
+                    <h4>Your <b>Password</b></h4>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group field">
+                                <label for="password">Password :</label>
+                                <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-container mt-4 border-0">
+                    <div class="row align-items-center row-reverse">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-dark shadow-sm fw-bold text-center px-4 py-2 float-end submit-btn">Register<i class="fa-solid fa-arrow-right ms-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

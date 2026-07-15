@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mb-5">
+    <div class="row">
+
+
+        {% if results|length == 0 %} 
+            <h1 class="text-center my-5">No Product Available</h1>
+        {% else %}
+            {% for r in results %}
+            <div class="col-md-3 p-3">
+                <div class="card product-card">
+                    <div class="position-relative">
+                        {% comment %} <span class="sale-badge">SALE</span> {% endcomment %}
+                        <a href="{% url "singal_product" r.id %}" class="product-link">
+                            <img src="{{  r.image1.url  }}" class="card-img-top" alt="Product Image">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h6 class="card-title text-capitalize">{{ r.brand  }} | {{  r.category  }}'s Cloth</h6>
+                            <span class="wishlist-ico">
+                                <a href="{% url "add_to_wishlist" r.id %}"> <i class="fa-regular fa-heart fs-5" style="cursor: pointer;" id="heart_icon" onclick="toggleHeart(this)"></i></a>
+                            </span>
+                        </div>
+                        <p class="card-text text-muted">
+                            {{  r.description | slice:":50"  }}...
+                        </p>
+                        <h5 class="text-dark">₹ {{  r.price }} 
+                            {% comment %} <small class="text-muted text-decoration-line-through">₹ 7,765</small>  {% endcomment %}
+                            {% comment %} <span class="text-success">20% off</span> {% endcomment %}
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+        
+
+    </div>
+</div>    
+
+
+
+{% endblock %}

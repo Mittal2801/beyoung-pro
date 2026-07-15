@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+
+<section>
+
+    <div class="container mt-5" style="margin-top: 0px;">
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <h3 class="">All Product</h3>
+            </div>
+            <div class="col-md-9">
+                <div class="brand_list">
+                    {% comment %} {% if category %} {% endcomment %}
+                        <ul class="list-unstyled d-flex gap-3 align-items-center justify-content-end">
+                            <li><a href="/category/{{name}}" class="active text-decoration-none text-black fw-bold btn btn-sm btn-outline-black">All</a></li>
+                            {% for brand in brands %}
+                                <li><a href="/category_brand/{{name}}/{{brand.name}}" class="text-decoration-none text-capitalize text-black fw-bold btn btn-sm ">{{ brand.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% comment %} {% endif %} {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% comment %} <div class="container mt-2">
+        
+        <div class="row mb-3 d-flex align-items-center justify-content-end">
+            <h3 class="w-75 text-end fs-5">Sort By:</h3>
+            <div class="col-md-3">
+                <select class="form-select w-100" aria-label="Default select example">
+                    <option selected>Price</option>
+                    <option value="1">Low to High</option>
+                    <option value="2">High to Low</option>
+                </select>
+            </div>
+        </div>
+
+    </div> {% endcomment %}
+
+
+    <div class="container mb-5">
+        <div class="row">
+
+
+            {% if products|length == 0 %} 
+                <h1 class="text-center my-5">No Product Available</h1>
+            {% else %}
+                {% for product in products %}
+                <div class="col-md-3 p-3">
+                    <div class="card product-card">
+                        <div class="position-relative">
+
+                            {% comment %} <span class="sale-badge">SALE</span> {% endcomment %}
+                            <a href="{% url "singal_product" product.id %}" class="product-link">
+                                <img src="{{  product.image1.url  }}" class="card-img-top" alt="Product Image">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <h6 class="card-title text-capitalize">{{ product.brand  }} | {{  product.category  }}'s Cloth</h6>
+                                <span class="wishlist-ico">
+                                    <a href="{% url "add_to_wishlist" product.id %}"> <i class="fa-regular fa-heart fs-5" style="cursor: pointer;" id="heart_icon" onclick="toggleHeart(this)"></i></a>
+                                </span> 
+                            </div>
+                            <p class="card-text text-muted">
+                                {{  product.description | slice:":50"  }}...
+                            </p>
+                            <h5 class="pt-4 text-dark">₹ {{  product.price }}
+                                {% comment %} <small class="text-muted text-decoration-line-through">₹ 7,765</small>  {% endcomment %}
+                                {% comment %} <span class="text-success">20% off</span> {% endcomment %}
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+            
+
+        </div>
+    </div>
+</section>
+
+<script>
+    function toggleHeart(icon) {
+        icon.classList.toggle("fa-solid");  // Toggle to solid heart
+        icon.classList.toggle("text-danger"); // Bootstrap ka red color
+    }
+</script>
+
+
+{% endblock content %}
