@@ -1,0 +1,1 @@
+web: gunicorn beyoung_pro.wsgi
